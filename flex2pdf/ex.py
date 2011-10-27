@@ -1,13 +1,11 @@
 
 #encoding: utf-8
 
-from reportlab.lib.pagesizes import A4
-from formdesigner.model import *
-#from formdesigner.lib.form_struct import form
-from formdesigner.lib.flexbox import *
-field_map = dict((field['id'],field) for field in form['items'])
-field_section = dict((field['id'],field) for field in form['items'])
 import os.path
+
+from reportlab.lib.pagesizes import A4
+
+
 
 
 def print_field(field, pfx):
@@ -68,14 +66,6 @@ def scan_tree(root, level=0):
             obj = obj_type(node['flex'],[scan_tree([node],level+1) for node in node['childs']])
     return obj
 
-def separate_vflex(struct):
-    page_w, page_h = A4
-    list_element = []
-    height_struct, childs_in, childs_out = struct.flow(15,15,page_w-30)
-    list_element.append(VFlex(1, childs_in))
-    if len(childs_out) > 0:
-        new_flex = VFlex(1, childs_out)
-        list_element.extend(separate_vflex(new_flex))
-    return list_element
+
     
     
