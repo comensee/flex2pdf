@@ -10,7 +10,6 @@ from reportlab.lib.pagesizes import A4
 
 from StringIO import StringIO
 
-from flex2pdf import ex
 from flex2pdf import draw
 from flex2pdf import flexbox
 
